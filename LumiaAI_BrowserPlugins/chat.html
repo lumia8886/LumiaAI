@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            width: 375px;
+            height: 667px;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <title>LumiaAI Chat</title>
+    <link rel="stylesheet" href="./chat.css">
+    <link rel="icon" type="image/png" href="./ico.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="chat-container">
+            <div class="background">
+                <div class="gradient-orb pink"></div>
+                <div class="gradient-orb purple"></div>
+                <div class="gradient-orb blue"></div>
+            </div>
+            
+            <div class="search-interface" id="search-interface">
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <img src="./logo.png" alt="Logo" class="nav-logo">
+                    </div>
+                    <div class="title">LumiaAI</div>
+                </div>
+                <h1 class="main-title">How can I help you?</h1>
+                <p class="sub-title">All in one Your aggregated AI assistant</p>
+                <textarea id="initial-input" placeholder="Enter your message..."></textarea>
+                <div class="model-selection">
+                    <label class="model-checkbox">
+                        <input type="checkbox" value="chatgpt" checked>
+                        <img src="./img/chatgpt.png" alt="ChatGPT">
+                        <span class="checkmark">ChatGPT</span>
+                    </label>
+                    <label class="model-checkbox">
+                        <input type="checkbox" value="claude" checked>
+                        <img src="./img/claude.png" alt="Claude">
+                        <span class="checkmark">Claude</span>
+                    </label>
+                    <label class="model-checkbox">
+                        <input type="checkbox" value="deepseek" checked>
+                        <img src="./img/deepseek.png" alt="Deepseek">
+                        <span class="checkmark">Deepseek</span>
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button id="settings-button" class="settings-button">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </button>
+                    <button id="search-button">Search</button>
+                </div>
+            </div> 
+            
+            <!-- Settings Modal -->
+            <div id="settings-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>API Settings</h2>
+                        <span class="close-settings">×</span>
+                    </div>
+                    <div class="modal-body">
+                        <p class="api-note">Supports ChatGPT API format</p>
+                        <div class="setting-item">
+                            <label for="api-url">API URL</label>
+                            <input type="text" id="api-url" placeholder="Enter API URL">
+                        </div>
+                        <div class="setting-item">
+                            <label for="api-key">API Key</label>
+                            <input type="password" id="api-key" placeholder="Enter API Key">
+                        </div>
+                        <div class="setting-item">
+                            <label for="system-message">System Message</label>
+                            <textarea id="system-message" placeholder="Enter default system message"></textarea>
+                        </div>
+                        <div class="setting-item model-settings">
+                            <label>Models</label>
+                            <div class="model-list">
+                                <div class="model-item">
+                                    <input type="checkbox" value="chatgpt" checked>
+                                    <input type="text" value="chatgpt" readonly>
+                                </div>
+                                <div class="model-item">
+                                    <input type="checkbox" value="claude" checked>
+                                    <input type="text" value="claude" readonly>
+                                </div>
+                                <div class="model-item">
+                                    <input type="checkbox" value="deepseek" checked>
+                                    <input type="text" value="deepseek" readonly>
+                                </div>
+                            </div>
+                            <button class="add-model-button">
+                                <i class="fas fa-plus"></i>
+                                Add Model
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="save-settings">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multi Chat Interface -->
+            <div class="multi-chat-interface" id="multi-chat-interface" style="display: none">
+                <div class="model-tabs">
+                    <div class="model-tab active" data-model="gpt">ChatGPT</div>
+                    <div class="model-tab" data-model="claude">Claude</div>
+                    <div class="model-tab" data-model="deepseek">Deepseek</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024-2025 LumiaAI. All rights reserved.</p>
+    </footer>
+
+    <script src="./chat.js"></script>
+</body>
+</html>
